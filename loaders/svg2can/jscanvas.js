@@ -156,7 +156,7 @@ jsContext2d.prototype.done = function () {
 };
 
 jsContext2d.prototype.toString = function () {
-    return "export default function(ctx) { var setCtxProp = function (ctx, key, value) { ctx [key] = value; };\n" + this.output + "}";
+    return "module.exports = function(ctx) { var setCtxProp = function (ctx, key, value) { ctx [key] = value; };\n" + this.output + "}";
 };
 
 jsContext2d.prototype.checkFields = function () {

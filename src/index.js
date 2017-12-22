@@ -5,7 +5,7 @@ import initViewPort from "./can/viewport";
 import getEventListeners from "./can/event-listeners";
 import type {Drawable} from "./can/drawable";
 
-import testSVG from "./svg/test.js"
+import testSVG from "./svg/test.svg"
 
 import cast from "./flo/cast";
 
@@ -38,7 +38,19 @@ let rot = 0;
 eventListeners.add("resize", () => { upd = true});
 const fooDrawables = [{
   updated: () => true,
-  draw: (ctx, scale) => { ctx.save();ctx.translate(250 * scale, 220 * scale); ctx.save(); ctx.scale(scale, scale); ctx.rotate(rot); ctx.translate(-25, -50); testSVG(ctx); ctx.restore(); ctx.restore(); upd = false; },
+  draw: (ctx, scale) => {
+    ctx.save();
+    ctx.translate(250 * scale, 220 * scale);
+    ctx.save();
+    ctx.scale(scale, scale);
+    ctx.rotate(rot);
+    ctx.translate(-25, -50);
+    //$FlowFixMe
+    testSVG(ctx);
+    ctx.restore();
+    ctx.restore();
+    upd = false;
+  },
   clear: (ctx, scale) => { ctx.clearRect(150*scale, 120*scale, 200*scale, 200*scale)},
 }];
 

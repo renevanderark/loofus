@@ -6,9 +6,14 @@ module.exports = {
     path: process.env.BUILD_TARGET || "./build",
     filename: "index.js",
   },
-
+  resolveLoader: {
+    alias: {"svgjsloader": __dirname + "/loaders/svgjsloader"}
+  },
   module: {
     loaders: [
+      {
+        test: /.svg$/, loader: 'svgjsloader'
+      },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
