@@ -9,9 +9,8 @@ import testSVG from "./svg/test.svg"
 
 import cast from "./flo/cast";
 
-const VIRT_WIDTH = 1200;
-const VIRT_HEIGHT = 1200;
-
+const VIRT_WIDTH = 1000;
+const VIRT_HEIGHT = 1000;
 
 const fooLayer = cast(HTMLCanvasElement, document.getElementById("foo-layer"));
 const barLayer = cast(HTMLCanvasElement, document.getElementById("bar-layer"));
@@ -20,7 +19,6 @@ const fooFrameRenderer = getFrameRenderer(fooLayer.getContext('2d'), fooLayer);
 const barFrameRenderer = getFrameRenderer(barLayer.getContext('2d'), barLayer);
 
 const eventListeners = getEventListeners();
-
 initViewPort(VIRT_WIDTH, VIRT_HEIGHT, getResizeListeners([fooLayer, barLayer],
   eventListeners.onResize,
   fooFrameRenderer.onResize,
@@ -40,6 +38,7 @@ const fooDrawables = [{
   updated: () => true,
   draw: (ctx, scale) => {
     ctx.save();
+    ctx.scale(rot/4, rot/4);
     ctx.translate(500 * scale, 500 * scale);
     ctx.save();
     ctx.scale(scale, scale);
@@ -51,7 +50,7 @@ const fooDrawables = [{
     ctx.restore();
     upd = false;
   },
-  clear: (ctx, scale) => { ctx.clearRect(0,0, 1200*scale, 1200*scale)},
+  clear: (ctx, scale) => { ctx.clearRect(0,0, 1000*scale, 1000*scale)},
 }];
 
 
@@ -59,6 +58,7 @@ const fooDrawables = [{
 let rendering = false;
 const renderLoop = () => {
   rot += 0.03;
+  if (rot >= 3*Math.PI) { rot = 0; }
   if (!rendering) {
     rendering = true;
     fooFrameRenderer.render(fooDrawables);
