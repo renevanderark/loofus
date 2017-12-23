@@ -9,8 +9,8 @@ import testSVG from "./svg/test.svg"
 
 import cast from "./flo/cast";
 
-const VIRT_WIDTH = 500;
-const VIRT_HEIGHT = 500;
+const VIRT_WIDTH = 1200;
+const VIRT_HEIGHT = 1200;
 
 
 const fooLayer = cast(HTMLCanvasElement, document.getElementById("foo-layer"));
@@ -40,25 +40,25 @@ const fooDrawables = [{
   updated: () => true,
   draw: (ctx, scale) => {
     ctx.save();
-    ctx.translate(250 * scale, 220 * scale);
+    ctx.translate(500 * scale, 500 * scale);
     ctx.save();
     ctx.scale(scale, scale);
     ctx.rotate(rot);
-    ctx.translate(-25, -50);
+    ctx.translate(-500, -500);
     //$FlowFixMe
     testSVG(ctx);
     ctx.restore();
     ctx.restore();
     upd = false;
   },
-  clear: (ctx, scale) => { ctx.clearRect(150*scale, 120*scale, 200*scale, 200*scale)},
+  clear: (ctx, scale) => { ctx.clearRect(0,0, 1200*scale, 1200*scale)},
 }];
 
 
 
 let rendering = false;
 const renderLoop = () => {
-  rot += 0.02;
+  rot += 0.03;
   if (!rendering) {
     rendering = true;
     fooFrameRenderer.render(fooDrawables);
