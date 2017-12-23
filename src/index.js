@@ -45,7 +45,7 @@ const fooDrawables = [{
     ctx.rotate(rot);
     ctx.translate(-500, -500);
     //$FlowFixMe
-    testSVG(ctx);
+    testSVG(ctx, {color: "#00ff00"});
     ctx.restore();
     ctx.restore();
     upd = false;

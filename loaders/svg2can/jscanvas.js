@@ -156,7 +156,7 @@ jsContext2d.prototype.done = function () {
 };
 
 jsContext2d.prototype.toString = function () {
-    return "module.exports = function(ctx) { var setCtxProp = function (ctx, key, value) { ctx [key] = value; };\n" + this.output + "}";
+    return "module.exports = function(ctx, iProps) { var props = iProps || {}; var setCtxProp = function (ctx, key, value) { ctx [key] = value; };\n" + this.output + "}";
 };
 
 jsContext2d.prototype.checkFields = function () {
@@ -171,7 +171,11 @@ jsContext2d.prototype.checkFields = function () {
 		this.output += 'setCtxProp (ctx, "'+ this.slashify (i) + '", '+this [i] +');\n';
 		break;
 	    case 'string':
-		this.output += 'setCtxProp (ctx, "'+ this.slashify (i) + '", "'+this.slashify (this [i]) +'");\n';
+		this.output += 'setCtxProp (ctx, "'+ this.slashify (i) + '", '+
+       (this[i].startsWith("{")
+          ? "props." + this[i].replace("{", "").replace("}", "")
+          : '"'+this.slashify (this [i]) + '"') +
+        ');\n';
 		break;
 	    default:
 		if (this [i].jscGradient) {
