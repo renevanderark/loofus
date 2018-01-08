@@ -4,7 +4,7 @@ import getResizeListeners from "./can/resize-listeners";
 import initViewPort from "./can/viewport";
 import getEventListeners from "./can/event-listeners";
 import type {Drawable} from "./can/drawable";
-
+import MusicalScore from "./mus/musical-score";
 import testSVG from "./svg/test.svg"
 
 import cast from "./flo/cast";
@@ -53,7 +53,8 @@ const fooDrawables = [{
   clear: (ctx, scale) => { ctx.clearRect(0,0, 1000*scale, 1000*scale)},
 }];
 
-
+new MusicalScore("https://renevanderark.github.io/arkaic/out/").play('string', 'C4h D4h');
+new MusicalScore("https://renevanderark.github.io/arkaic/out/").play('piano', 'C2i C2i C2i D2s E2s C2i C2i C2i C2i');
 
 let rendering = false;
 const renderLoop = () => {
