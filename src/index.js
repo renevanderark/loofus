@@ -2,10 +2,7 @@
 import cast from "flo-cast";
 import MusicalScore from "musical-score";
 
-import getFrameRenderer from "./can/frame-renderer";
-import getResizeListeners from "./can/resize-listeners";
-import initViewPort from "./can/viewport";
-import getEventListeners from "./can/event-listeners";
+import { getFrameRenderer, getResizeListeners, initViewPort, getEventListeners } from "./can";
 import testSVG from "./svg/test.svg"
 
 
