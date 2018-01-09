@@ -4,7 +4,7 @@ import getResizeListeners from "./can/resize-listeners";
 import initViewPort from "./can/viewport";
 import getEventListeners from "./can/event-listeners";
 import type {Drawable} from "./can/drawable";
-import MusicalScore from "./mus/musical-score";
+import MusicalScore from "musical-score";
 import testSVG from "./svg/test.svg"
 
 import cast from "./flo/cast";

@@ -1,9 +1,10 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: "./src/index.js",
   output: {
-    path: process.env.BUILD_TARGET || "./build",
+    path: path.resolve(__dirname, "build"),
     filename: "index.js",
   },
   resolveLoader: {
@@ -19,7 +20,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react', 'stage-2']
+          presets: ['env']
         }
       }
     ]
