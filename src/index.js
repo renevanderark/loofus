@@ -1,13 +1,14 @@
 /* @flow */
+import cast from "flo-cast";
+import MusicalScore from "musical-score";
+
 import getFrameRenderer from "./can/frame-renderer";
 import getResizeListeners from "./can/resize-listeners";
 import initViewPort from "./can/viewport";
 import getEventListeners from "./can/event-listeners";
-import type {Drawable} from "./can/drawable";
-import MusicalScore from "musical-score";
 import testSVG from "./svg/test.svg"
 
-import cast from "./flo/cast";
+
 
 const VIRT_WIDTH = 1000;
 const VIRT_HEIGHT = 1000;
