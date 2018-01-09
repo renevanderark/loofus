@@ -1,11 +1,9 @@
 /* @flow */
 import cast from "flo-cast";
 import MusicalScore from "musical-score";
+import { getFrameRenderer, getResizeListeners, initViewPort, getEventListeners } from "resizable-canvas";
 
-import { getFrameRenderer, getResizeListeners, initViewPort, getEventListeners } from "./can";
 import testSVG from "./svg/test.svg"
-
-
 
 const VIRT_WIDTH = 1000;
 const VIRT_HEIGHT = 1000;
