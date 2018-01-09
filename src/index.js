@@ -56,7 +56,9 @@ const fooDrawables = [{
 const music = new MusicalScore("https://renevanderark.github.io/arkaic/out/");
 music.addTrack('string', 'C4h D4h');
 music.addTrack('horn', 'C2i C2i C2i D2s E2s C2i C2i C2i C2i');
-music.play();
+music.play(true);
+
+setTimeout(() => music.stop(), 1000);
 
 let rendering = false;
 const renderLoop = () => {

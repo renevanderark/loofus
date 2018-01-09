@@ -11,7 +11,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "musical-score": "git://github.com/renevanderark/js-musical-score.git#v1.0.0"
+    "musical-score": "git://github.com/renevanderark/js-musical-score.git#v1.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
