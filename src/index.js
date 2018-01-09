@@ -53,8 +53,10 @@ const fooDrawables = [{
   clear: (ctx, scale) => { ctx.clearRect(0,0, 1000*scale, 1000*scale)},
 }];
 
-new MusicalScore("https://renevanderark.github.io/arkaic/out/").play('string', 'C4h D4h');
-new MusicalScore("https://renevanderark.github.io/arkaic/out/").play('piano', 'C2i C2i C2i D2s E2s C2i C2i C2i C2i');
+const music = new MusicalScore("https://renevanderark.github.io/arkaic/out/");
+music.addTrack('string', 'C4h D4h');
+music.addTrack('horn', 'C2i C2i C2i D2s E2s C2i C2i C2i C2i');
+music.play();
 
 let rendering = false;
 const renderLoop = () => {

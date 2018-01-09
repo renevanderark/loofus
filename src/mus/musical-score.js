@@ -12,10 +12,11 @@ const durations = {
 
 class MusicalScore {
   soundbank : string;
+  tracks : Array<{instrument : string, notes : string }>;
 
   constructor(soundbank : string) {
-
     this.soundbank = soundbank;
+    this.tracks = [];
   }
 
   playNote(instrument : string, n : string) {
@@ -23,7 +24,7 @@ class MusicalScore {
     new Audio(this.soundbank + instrument + "/" + encodeURIComponent(n) + ".ogg").play();
   }
 
-  play(instrument : string, notes : string, loop : boolean = false) {
+  playTrack(instrument : string, notes : string, loop : boolean = false) {
     let tm = 0;
     notes.split(" ").forEach((n) => {
         setTimeout(() => this.playNote(instrument, n), tm);
@@ -31,9 +32,17 @@ class MusicalScore {
     });
 
     if (loop) {
-        setTimeout(() => this.play(instrument, notes, true), tm);
+        setTimeout(() => this.playTrack(instrument, notes, true), tm);
     }
-}
+  }
+
+  addTrack(instrument : string, notes : string) {
+    this.tracks.push({instrument : instrument, notes : notes});
+  }
+
+  play(loop : boolean = false)  {
+    this.tracks.forEach(track => this.playTrack(track.instrument, track.notes, loop));
+  }
 }
 
 export default MusicalScore;
